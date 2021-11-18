@@ -23,18 +23,13 @@ public class FakeTravelResultService {
 
 
         for (Route route: fakeRoutesList ) {
-            // System.out.println("ADDING ROUTE: " + route.getDepartureTime());
             if (onlyAvailable && route.getBookable() && !onlyDirect) {  //ONLY AVAILABLE + DIRECT/INDIRECT
-                // System.out.println("ONLY AVAILABLE");
                 filteredListOfRoutes.add(route);
             } else if (onlyDirect && route.getTransfersCount() == 0 && !onlyAvailable) { //ONLY DIRECT + AVAILABLE/UNAVAILABLE
-                //  System.out.println("ONLY DIRECT");
                 filteredListOfRoutes.add(route);
             } else if ((onlyAvailable && route.getBookable()) && (onlyDirect && route.getTransfersCount() == 0)) { //AVAILABLE + DIRECT
-                //  System.out.println("ONLY AVAILABLE + ONLY DIRECT");
                 filteredListOfRoutes.add(route);
             } else if (!onlyAvailable && !onlyDirect){ //ALL
-                //  System.out.println("REST - ALL+");
                 return fakeRoutesList;
             }
         }
